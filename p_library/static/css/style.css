@@ -1,0 +1,9 @@
+.list-group {
+    font-size: 12pt;
+    margin: 50px auto;
+    max-width: 600px;
+}
+
+.list-group-item {
+    padding: 5px;
+}
