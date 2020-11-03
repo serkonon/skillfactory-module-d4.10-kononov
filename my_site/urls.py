@@ -23,5 +23,5 @@ urlpatterns = [
     path('index/', views.index),
     path('index/book_increment/', views.book_increment),
     path('index/book_decrement/', views.book_decrement),
-    path('publish/', views.publish),
+    path('publishers/', views.publishers),
 ]
