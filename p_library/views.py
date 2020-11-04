@@ -60,9 +60,7 @@ def book_decrement(request):
 def publishers(request):
     template = loader.get_template('publisher.html')
     publishers = Publisher.objects.all()
-    books = Book.objects.all()
     out_data = {
         "publishers": publishers,
-        "books": books,
     }
     return HttpResponse(template.render(out_data, request))
