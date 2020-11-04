@@ -12,10 +12,8 @@
     {% for publisher in publishers %}
         <li class="list-group-item">
             <p class="pub-name">{{ publisher }}</p>
-            {% for book in books %}
-                {% if book.publisher == publisher %}
-                    <p class="book-name">{{ book.title }} - {{ book.year_release }}</p>
-                {% endif %}
+            {% for book in publisher.book_publisher.all %}
+                <p class="book-name">{{ book.title }} - {{ book.year_release }}</p>
             {% endfor %}
         </li>
     {% endfor %}
