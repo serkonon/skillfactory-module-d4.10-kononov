@@ -8,16 +8,19 @@
     <title>Издатели</title>
 </head>
 <body>
-    <ul class="list-group">
-    {% for publisher in publishers %}
-        <li class="list-group-item">
-            <p class="pub-name">{{ publisher }}</p>
-            {% for book in publisher.book_publisher.all %}
-                <p class="book-name">{{ book.title }} - {{ book.year_release }}</p>
-            {% endfor %}
-        </li>
-    {% endfor %}
-    </ul>
-
+    <div class="container">
+        {% for publisher in publishers %}
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="publr">{{ publisher }}</div>
+                <ul class="list-group books">
+                {% for book in publisher.book_publisher.all %}
+                    <li class="list-group-item">{{ book.title }} - {{ book.year_release }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
 </body>
 </html>

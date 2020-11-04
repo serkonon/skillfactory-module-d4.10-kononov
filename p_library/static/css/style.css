@@ -9,8 +9,9 @@ table > tbody > tr > td {
     padding: 10px;
 }
 
-.book-name {
-    margin: 15px 0 0 25px;
+.container {
+    margin: 50px auto;
+    max-width: 600px;
 }
 
 .btn{
@@ -21,20 +22,17 @@ table > tbody > tr > td {
 }
 
 .list-group {
-    font-size: 12pt;
-    line-height: 7pt;
-    margin: 50px auto;
-    max-width: 600px;
+    padding: 10px;
 }
 
 .list-group-item {
     border: solid 2px green;
-    padding: 18px;
+    padding: 6pt;
 }
 
-.pub-name {
+.publr {
     font-weight: 800;
-    margin: 0 0 10px 0;
+    margin-left: 12px;
 }
 
 .welcome {
