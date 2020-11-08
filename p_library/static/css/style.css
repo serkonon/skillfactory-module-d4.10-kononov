@@ -27,9 +27,15 @@ form > p > label {
     width: 130px;
 }
 
-table > tbody > tr > td {
+table > tbody > tr > td, table > tbody > tr > th {
     border: solid 2px green;
     padding: 10px;
+}
+
+table > tbody > tr > th {
+    background-color: #28a745;
+    color: white;
+    text-align: center;
 }
 
 .caption {

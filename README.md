@@ -9,17 +9,22 @@ Heroku: https://glacial-eyrie-57878.herokuapp.com
 python manage.py runserver
 ```
 
+##### Страница вывода списка Книг:
+```
+<site_addr>/index/
+```
+
 ##### Страница вывода связей Издатель - Книга:
 ```
 <site_addr>/publishers/
 ```
 
-##### Страница создания данных друзей:
+##### Страница создания данных Друзей:
 ```
 <site_addr>/friend/create/
 ```
 
-##### Страница списка друзей:
+##### Страница списка Друзей:
 ```
 <site_addr>/friends/
 ```
