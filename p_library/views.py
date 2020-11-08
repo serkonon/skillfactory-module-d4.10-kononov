@@ -80,7 +80,7 @@ class AuthorEdit(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(AuthorEdit, self).get_context_data(**kwargs)
-        context['title'] = "Создание автора"
+        context['title'] = "Создание данных автора"
         return context
 
 
@@ -102,7 +102,7 @@ class FriendEdit(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(FriendEdit, self).get_context_data(**kwargs)
-        context['title'] = "Создание друга"
+        context['title'] = "Создание данных друга"
         return context
 
 

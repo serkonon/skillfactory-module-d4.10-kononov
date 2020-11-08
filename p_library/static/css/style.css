@@ -32,6 +32,11 @@ table > tbody > tr > td {
     padding: 10px;
 }
 
+.caption {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
 .container {
     margin: 50px auto;
     max-width: 600px;
