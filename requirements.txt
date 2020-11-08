@@ -5,3 +5,4 @@ django
 django-crispy-forms
 pytz==2020.1
 sqlparse==0.4.1
+psycopg2
