@@ -4,6 +4,29 @@ body {
     padding: 14px;
 }
 
+form > p {
+    display: flex;
+    align-items: flex-start;
+}
+
+form > hr {
+    border-top: solid 2pt grey;
+}
+
+form > p > input, form > p > textarea, form > p > select {
+    border: solid 2px green;
+    border-radius: .25rem;
+    width: 330px;
+}
+
+form > p > textarea {
+    height: 100px;
+}
+
+form > p > label {
+    width: 130px;
+}
+
 table > tbody > tr > td {
     border: solid 2px green;
     padding: 10px;

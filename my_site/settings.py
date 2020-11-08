@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['glacial-eyrie-57878.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['glacial-eyrie-57878.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'p_library',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

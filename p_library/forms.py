@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import formset_factory
-from .models import Author, Book
+from .models import Author, Book, Friend
 
 
 class AuthorForm(forms.ModelForm):
@@ -16,6 +16,14 @@ class BookForm(forms.ModelForm):
 
     class Meta:
         model = Book
+        fields = '__all__'
+
+
+class FriendForm(forms.ModelForm):
+    full_name = forms.CharField(label="ФИО", widget=forms.TextInput)
+
+    class Meta:
+        model = Friend
         fields = '__all__'
 
 

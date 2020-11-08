@@ -6,8 +6,8 @@ from django.shortcuts import redirect
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 from django.forms import formset_factory
-from p_library.models import Book, Publisher, Author
-from p_library.forms import AuthorForm, BookForm
+from p_library.models import Book, Publisher, Author, Friend
+from p_library.forms import AuthorForm, BookForm, FriendForm
 
 
 def books_list(request):
@@ -20,7 +20,7 @@ def index(request):
     books_count = Book.objects.all().count()
     books = Book.objects.all()
     out_data = {
-        "title": "мою библиотеку",
+        "title": "Моя библиотека",
         "books_count": books_count,
         "books": books,
     }
@@ -67,6 +67,7 @@ def publishers(request):
     publishers = Publisher.objects.all()
     out_data = {
         "publishers": publishers,
+        "title": "Издатели",
     }
     return HttpResponse(template.render(out_data, request))
 
@@ -77,10 +78,42 @@ class AuthorEdit(CreateView):
     success_url = reverse_lazy('p_library:author_list')
     template_name = 'author_edit.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(AuthorEdit, self).get_context_data(**kwargs)
+        context['title'] = "Создание автора"
+        return context
+
 
 class AuthorList(ListView):
     model = Author
-    template_name = 'authors_list.html'
+    template_name = 'authors.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AuthorList, self).get_context_data(**kwargs)
+        context['title'] = "Авторы"
+        return context
+
+
+class FriendEdit(CreateView):
+    model = Friend
+    form_class = FriendForm
+    success_url = reverse_lazy('p_library:friend_list')
+    template_name = 'friend_edit.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FriendEdit, self).get_context_data(**kwargs)
+        context['title'] = "Создание друга"
+        return context
+
+
+class FriendList(ListView):
+    model = Friend
+    template_name = 'friends.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FriendList, self).get_context_data(**kwargs)
+        context['title'] = "Друзья"
+        return context
 
 
 def author_create_many(request):
@@ -93,7 +126,7 @@ def author_create_many(request):
             return HttpResponseRedirect(reverse_lazy('p_library:author_list'))  #  После чего, переадресуем браузер на список всех авторов.
     else:  #  GET запрос, значит в ответ нужно просто "нарисовать" формы
         author_formset = AuthorFormSet(prefix='authors')  #  Инициализируем формсет и ниже передаём его в контекст шаблона
-    return render(request, 'manage_authors.html', {'author_formset': author_formset})
+    return render(request, 'manage_authors.html', {'author_formset': author_formset, 'title': 'Создание авторов',})
 
 
 def books_authors_create_many(request):
@@ -117,5 +150,6 @@ def books_authors_create_many(request):
         {
             'author_formset': author_formset,
             'book_formset': book_formset,
+            'title': 'Создание авторов и книг',
         }
     )

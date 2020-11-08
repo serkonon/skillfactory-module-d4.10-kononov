@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Author(models.Model):
-    full_name = models.TextField(verbose_name="Имя")
+    full_name = models.TextField(verbose_name="ФИО")
     birth_year = models.SmallIntegerField(verbose_name="Год рождения")
     country = models.CharField(max_length=2, verbose_name="Код страны")
 
@@ -27,6 +27,17 @@ class Publisher(models.Model):
         verbose_name_plural = 'Издатели'
 
 
+class Friend(models.Model):
+    full_name = models.TextField(verbose_name="ФИО")
+
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        verbose_name = 'Друг'
+        verbose_name_plural = 'Друзья'
+
+
 class Book(models.Model):
     ISBN = models.CharField(max_length=13)
     title = models.TextField(verbose_name="Название")
@@ -35,7 +46,12 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="book_author")
     price = models.DecimalField(default=0, max_digits=10, decimal_places=2, verbose_name="Цена")
     copy_count = models.PositiveSmallIntegerField(default=1, verbose_name="Кол-во экземпляров")
-    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE, null=True, related_name="book_publisher")
+    publisher = models.ForeignKey(
+        Publisher, on_delete=models.CASCADE, null=True, related_name="book_publisher", verbose_name="Издатель"
+    )
+    friend = models.ForeignKey(
+        Friend, on_delete=models.CASCADE, blank=True, null=True, related_name="book_friend", verbose_name="Друг"
+    )
 
     def __str__(self):
         return self.title
