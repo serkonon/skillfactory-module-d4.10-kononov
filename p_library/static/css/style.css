@@ -48,6 +48,14 @@ table > tbody > tr > th {
     max-width: 600px;
 }
 
+.custom-select {
+    padding: 0 28px 0 10px;
+    height: 24px;
+    width: 220px;
+    margin: 6px;
+    border: solid 1px green;
+}
+
 .btn{
     font-size: inherit;
     padding: 0 10px;

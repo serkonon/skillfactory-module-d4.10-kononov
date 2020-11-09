@@ -18,11 +18,13 @@ def books_list(request):
 def index(request):
     template = loader.get_template('index.html')
     books_count = Book.objects.all().count()
-    books = Book.objects.all()
+    books = Book.objects.all().order_by("id")
+    friends = Friend.objects.all().order_by("id")
     out_data = {
         "title": "Моя библиотека",
         "books_count": books_count,
         "books": books,
+        "friends": friends,
     }
     return HttpResponse(template.render(out_data, request))
 
@@ -37,6 +39,26 @@ def book_increment(request):
             if not book:
                 return redirect('/index/')
             book.copy_count += 1
+            book.save()
+        return redirect('/index/')
+    else:
+        return redirect('/index/')
+
+
+def book_borrow(request):
+    if request.method == 'POST':
+        book_id = request.POST['book_id']
+        friend_id = request.POST['friend_id']
+        if not book_id or not friend_id:
+            return redirect('/index/')
+        else:
+            book = Book.objects.get(id=book_id)
+            friend = None
+            if friend_id != "---":
+                friend = Friend.objects.get(id=friend_id)
+            if not book:
+                return redirect('/index/')
+            book.friend = friend
             book.save()
         return redirect('/index/')
     else:

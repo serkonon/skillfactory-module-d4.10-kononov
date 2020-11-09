@@ -40,6 +40,17 @@
                     <input type="hidden" name="id" value="{{book.id}}" />
                     <input type="submit" class="btn btn-secondary" value="Уменьшить кол-во" />
                 </form>
+                <form action="/index/book_borrow/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="book_id" value="{{book.id}}" />
+                    <input type="submit" class="btn btn-success" value="Одолжить" />
+                    <select class="custom-select" name="friend_id">
+                        <option selected>---</option>
+                        {% for friend in friends %}
+                            <option value="{{ friend.id }}">{{ friend.full_name }}</option>
+                        {% endfor %}
+                    </select>
+                </form>
             </td>
         </tr>
         {% endfor %}
