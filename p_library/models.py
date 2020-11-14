@@ -52,6 +52,7 @@ class Book(models.Model):
     friend = models.ForeignKey(
         Friend, on_delete=models.CASCADE, blank=True, null=True, related_name="book_friend", verbose_name="Друг"
     )
+    image = models.ImageField(upload_to="covers/", null=True, blank=True)
 
     def __str__(self):
         return self.title

@@ -5,7 +5,7 @@
 {% block content %}
 	<ul>
 		{% for author in object_list %}
-		    <li>{{ author.full_name }}</li>
+			<li><a href="{{author.id}}/edit">{{ author.full_name }}</a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}

@@ -27,6 +27,10 @@ form > p > label {
     width: 130px;
 }
 
+li > a, li > a:hover {
+    color: inherit;
+}
+
 table > tbody > tr > td, table > tbody > tr > th {
     border: solid 2px green;
     padding: 10px;
@@ -36,6 +40,14 @@ table > tbody > tr > th {
     background-color: #28a745;
     color: white;
     text-align: center;
+}
+
+.book-img {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 137px;
+    height: 190px;
 }
 
 .caption {

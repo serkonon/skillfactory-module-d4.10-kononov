@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import redirect
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 from django.urls import reverse_lazy
 from django.forms import formset_factory
 from p_library.models import Book, Publisher, Author, Friend
@@ -103,6 +103,18 @@ class AuthorEdit(CreateView):
     def get_context_data(self, **kwargs):
         context = super(AuthorEdit, self).get_context_data(**kwargs)
         context['title'] = "Создание данных автора"
+        return context
+
+
+class AuthorUpdate(UpdateView):
+    model = Author
+    success_url = reverse_lazy('p_library:author_list')
+    fields = ["full_name", "birth_year", "country"]
+    template_name = 'author_edit.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AuthorUpdate, self).get_context_data(**kwargs)
+        context['title'] = "Правка данных автора"
         return context
 
 
