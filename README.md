@@ -1,33 +1,15 @@
-#### Адрес сайта <site_addr>:
+#### Развертывание сайта локально:
 ```
-Локально: http://127.0.0.1:8000
-Heroku: https://glacial-eyrie-57878.herokuapp.com
-```
-
-#### Запуск сайта локально:
-```
-python manage.py runserver
-```
-
-#### Страница вывода списка Книг:
-С помощью кнопки "Одолжить" можно пометить передачу книги другу 
-```
-<site_addr>/index/
-```
-
-#### Страница вывода связей Издатель - Книга:
-```
-<site_addr>/publishers/
-```
-
-#### Страница создания данных Друзей:
-```
-<site_addr>/friend/create/
-```
-
-#### Страница списка Друзей:
-```
-<site_addr>/friends/
+1) user@user-pc:~/Downloads$ python3 -m venv django_test
+2) user@user-pc:~/Downloads/django_test/bin$ source activate
+3) (django_test) user@user-pc:~/Downloads/django_test$ pip install django
+4) (django_test) user@user-pc:~/Downloads/django_test$ django-admin startproject my_site .
+5) (django_test) user@user-pc:~/Downloads/django_test$ python manage.py startapp p_library
+6) создать в директории django_test файл .env со значением SECRET_KEY из settings.py, например:
+   SECRET_KEY=0g#3f26r@j!wjb78-(x%f5kw#e%vid5b^u^mr_x^fajwbn^%@-
+7) скачать zip-архив данного приложения, разархивировать в django_test с перезаписью цлевых файлов
+8) (django_test) user@user-pc:~/Downloads/django_test$ pip3 install -r requirements.txt
+9) (django_test) user@user-pc:~/Downloads/django_test$ python manage.py runserver
 ```
 
 #### Данные суперпользователя БД

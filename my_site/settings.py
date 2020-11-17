@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,11 +22,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if os.path.isfile(".env"):
-    with open(".env") as f:
-        for line in f:
-            [key, value] = line.strip().split("=")
-            os.environ[key] = value
+# if os.path.isfile(".env"):
+#     with open(".env") as f:
+#         for line in f:
+#             [key, value] = line.strip().split("=")
+#             os.environ[key] = value
+#
+
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path)
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 

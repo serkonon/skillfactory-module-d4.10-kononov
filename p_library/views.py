@@ -33,16 +33,35 @@ def book_increment(request):
     if request.method == 'POST':
         book_id = request.POST['id']
         if not book_id:
-            return redirect('/index/')
+            return redirect('/')
         else:
             book = Book.objects.filter(id=book_id).first()
             if not book:
-                return redirect('/index/')
+                return redirect('/')
             book.copy_count += 1
             book.save()
-        return redirect('/index/')
+        return redirect('/')
     else:
-        return redirect('/index/')
+        return redirect('/')
+
+
+def book_decrement(request):
+    if request.method == 'POST':
+        book_id = request.POST['id']
+        if not book_id:
+            return redirect('/')
+        else:
+            book = Book.objects.filter(id=book_id).first()
+            if not book:
+                return redirect('/')
+            if book.copy_count < 1:
+                book.copy_count = 0
+            else:
+                book.copy_count -= 1
+            book.save()
+        return redirect('/')
+    else:
+        return redirect('/')
 
 
 def book_borrow(request):
@@ -57,31 +76,12 @@ def book_borrow(request):
             if friend_id != "---":
                 friend = Friend.objects.get(id=friend_id)
             if not book:
-                return redirect('/index/')
+                return redirect('/')
             book.friend = friend
             book.save()
-        return redirect('/index/')
+        return redirect('/')
     else:
-        return redirect('/index/')
-
-
-def book_decrement(request):
-    if request.method == 'POST':
-        book_id = request.POST['id']
-        if not book_id:
-            return redirect('/index/')
-        else:
-            book = Book.objects.filter(id=book_id).first()
-            if not book:
-                return redirect('/index/')
-            if book.copy_count < 1:
-                book.copy_count = 0
-            else:
-                book.copy_count -= 1
-            book.save()
-        return redirect('/index/')
-    else:
-        return redirect('/index/')
+        return redirect('/')
 
 
 def publishers(request):
