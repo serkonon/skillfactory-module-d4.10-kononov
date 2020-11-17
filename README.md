@@ -1,8 +1,10 @@
 #### Развертывание сайта локально:
 ```
 1) user@user-pc:~/Downloads$ python3 -m venv django_test
-2) user@user-pc:~/Downloads/django_test/bin$ source activate
-3) (django_test) user@user-pc:~/Downloads/django_test$ pip3 install django
+2) user@user-pc:~/Downloads$ cd django_test/bin
+3) user@user-pc:~/Downloads/django_test/bin$ source activate
+4) (django_test) user@user-pc:~/Downloads/django_test/bin$ cd ..
+5) (django_test) user@user-pc:~/Downloads/django_test$ pip3 install django
 4) (django_test) user@user-pc:~/Downloads/django_test$ django-admin startproject my_site .
 5) (django_test) user@user-pc:~/Downloads/django_test$ python manage.py startapp p_library
 6) создать в директории django_test/my_site файл .env со значением SECRET_KEY из settings.py, например:
