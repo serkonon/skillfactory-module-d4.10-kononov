@@ -7,7 +7,7 @@
 5) (django_test) user@user-pc:~/Downloads/django_test$ python manage.py startapp p_library
 6) создать в директории django_test файл .env со значением SECRET_KEY из settings.py, например:
    SECRET_KEY=0g#3f26r@j!wjb78-(x%f5kw#e%vid5b^u^mr_x^fajwbn^%@-
-7) скачать zip-архив данного приложения, разархивировать в django_test с перезаписью цлевых файлов
+7) скачать zip-архив данного приложения, разархивировать в django_test с перезаписью целевых файлов
 8) (django_test) user@user-pc:~/Downloads/django_test$ pip3 install -r requirements.txt
 9) (django_test) user@user-pc:~/Downloads/django_test$ python manage.py runserver
 ```
